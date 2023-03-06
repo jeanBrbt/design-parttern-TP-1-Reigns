@@ -1,6 +1,7 @@
 package main;
 
 import java.util.Map;
+import java.util.Scanner;
 import java.util.TreeMap;
 
 /**
@@ -137,6 +138,29 @@ public class Question {
                                     +effet.getValue());
                     break;
             }
+        }
+    }
+    /**
+     * Cette fonction permet de gérer la réponse à une question donnée. Elle affiche la question, demande à
+     * l'utilisateur d'entrer une réponse (soit "G" soit "D") et en fonction de la réponse, elle appelle la méthode
+     * appropriée pour appliquer les conséquences sur les jauges du personnage.
+     * @param personnage La question à laquelle il faut répondre
+     */
+    public void reponseQuestion(Personnage personnage){
+        this.afficheQuestion();
+        // récupère la réponse
+        Scanner scanner = new Scanner(System.in);
+        String reponse = "";
+        while(!reponse.equals("G") && !reponse.equals("D")){
+            System.out.println("Entrez la réponse (G ou D)");
+            System.out.flush();
+            reponse = scanner.nextLine();
+        }
+        // applique les malus
+        if(reponse.equals("G")){
+            this.appliqueEffetsGauche(personnage);
+        }else{
+            this.appliqueEffetsDroite(personnage);
         }
     }
 
