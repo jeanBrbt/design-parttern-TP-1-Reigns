@@ -1,8 +1,5 @@
 package main;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 /**
  * La classe Reigns représente le programme principal du jeu Reigns
  *
@@ -19,11 +16,6 @@ public class Reigns  {
      * les jauges
      */
     protected static Jauge jauges;
-
-    /**
-     * la banque de questions
-     */
-    private static ArrayList<Question> questions;
 
     /**
      * La méthode main lance le jeu Reigns. Il initialise les questions, le personnage,
