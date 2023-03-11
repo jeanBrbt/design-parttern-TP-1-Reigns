@@ -36,7 +36,7 @@ public class banqueQuestion {
         question1.ajouteEffetGauche(TypeJauge.ARMEE, -5);
         question1.ajouteEffetGauche(TypeJauge.PEUPLE, +5);
         question1.ajouteEffetDroite(TypeJauge.PEUPLE, -7);
-     //   questions.add(question1);
+        questions.add(question1);
         Question question2 = new Question(
                 "Paysan",
                 "Il n'y a plus rien à manger",
@@ -45,7 +45,7 @@ public class banqueQuestion {
         question2.ajouteEffetGauche(TypeJauge.FINANCE,-5);
         question2.ajouteEffetGauche(TypeJauge.PEUPLE, +5);
         question2.ajouteEffetDroite(TypeJauge.PEUPLE, -5);
-     //   questions.add(question2);
+        questions.add(question2);
         Question question3 = new Question(
                 "Prêtre",
                 "Les dieux sont en colère",
@@ -54,7 +54,7 @@ public class banqueQuestion {
         question3.ajouteEffetGauche(TypeJauge.CLERGE, +5);
         question3.ajouteEffetGauche(TypeJauge.PEUPLE, -3);
         question3.ajouteEffetDroite(TypeJauge.CLERGE, -5);
-      //  questions.add(question3);
+        questions.add(question3);
         Question question4 = new Question(
                 "Main du roi",
                 "Le roi Baratheon rassemble son armée",
@@ -64,7 +64,7 @@ public class banqueQuestion {
         question4.ajouteEffetGauche(TypeJauge.FINANCE, -3);
         question4.ajouteEffetGauche(TypeJauge.CLERGE, -3);
         question4.ajouteEffetDroite(TypeJauge.PEUPLE, +3);
-      //  questions.add(question4);
+        questions.add(question4);
         Question question5 = new Question(
                 "Paysan",
                 "Abondance de récoltes cette année",
@@ -74,7 +74,7 @@ public class banqueQuestion {
         question5.ajouteEffetGauche(TypeJauge.PEUPLE, -5);
         question5.ajouteEffetDroite(TypeJauge.FINANCE, +1);
         question5.ajouteEffetDroite(TypeJauge.PEUPLE, -3);
-      //  questions.add(question5);
+        questions.add(question5);
     }
 
 
