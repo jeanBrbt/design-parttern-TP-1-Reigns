@@ -8,27 +8,28 @@ package main;
  */
 public class Jauge {
     /**
-     * Le type de la jauge
-     */
-    protected TypeJauge type;
-    /**
      * Le nom de la jauge
      */
-    protected String nom;
+    protected TypeJauge nom;
     /**
      * La valeur de la jauge
      */
     protected int valeur;
 
+    protected HashMap<TypeJauge, Jauge> jauges;
+
     /**
      * Crée une nouvelle jauge avec le nom et la valeur spécifiés.
-     *
-     * @param nom Le nom de la jauge
+     *  @param nom Le nom de la jauge
      * @param valeur La valeur de la jauge
      */
-    public Jauge(String nom, int valeur){
+    public Jauge(TypeJauge nom, int valeur){
         this.nom = nom;
         this.valeur = valeur;
+    }
+
+    public Jauge() {
+
     }
 
     /**
@@ -36,7 +37,7 @@ public class Jauge {
      *
      * @return le nom de la jauge
      */
-    public String getNom() {
+    public TypeJauge getNom() {
         return nom;
     }
 
@@ -45,7 +46,7 @@ public class Jauge {
      *
      * @param nom Le nouveau nom de la jauge
      */
-    public void setNom(String nom) {
+    public void setNom(TypeJauge nom) {
         this.nom = nom;
     }
 
@@ -73,15 +74,15 @@ public class Jauge {
      * @return le type de la jauge
      */
     public TypeJauge getType() {
-        return type;
+        return nom;
     }
 
     /**
      * Modifie le type de la jauge.
      *
-     * @param type Le nouveau type de la jauge
+     * @param nom Le nouveau type de la jauge
      */
-    public void setType(TypeJauge type) {
-        this.type = type;
+    public void setType(TypeJauge nom) {
+        this.nom = nom;
     }
 }
