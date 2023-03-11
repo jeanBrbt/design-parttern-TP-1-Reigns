@@ -1,5 +1,8 @@
 package main;
 
+
+import java.util.HashMap;
+
 /**
  * Représente une jauge avec un nom, une valeur et un type.
  *
@@ -41,6 +44,37 @@ public class Jauge {
 
     public void ajouterJauge(TypeJauge type, Jauge jauge){
         this.jauges.put(type, jauge);
+    }
+
+    /**
+     * Affiche les jauges de Clergé, Peuple, Armée et Finances du personnage.
+     */
+    public void AfficheJauges() {
+        for (Jauge jauge : jauges.values()) {
+            afficheJauge(jauge);
+        }
+    }
+
+    /**
+     * Affiche une jauge avec un format graphique, en utilisant des "#" pour représenter la valeur de la jauge
+     * et des "_" pour représenter la valeur manquante.
+     *
+     * @param jauge La jauge à afficher
+     */
+    public void afficheJauge(Jauge jauge) {
+        String resultat = "[";
+        // valeur : ####
+        for(int i=0;i<this.valeur;i++){
+            resultat += "#";
+        }
+        // on complète avec ____
+        for(int i=0;i<50-(this.valeur>0?jauge.getValeur():0);i++){
+            resultat += "_";
+        }
+        resultat += "] ";
+        // affichage du nom
+        resultat += this.nom;
+        System.out.println(resultat);
     }
 
     /**
