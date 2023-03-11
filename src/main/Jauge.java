@@ -39,6 +39,10 @@ public class Jauge {
         }
     }
 
+    public void ajouterJauge(TypeJauge type, Jauge jauge){
+        this.jauges.put(type, jauge);
+    }
+
     /**
      * Retourne le nom de la jauge.
      *
