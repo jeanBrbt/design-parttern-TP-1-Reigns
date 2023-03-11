@@ -16,6 +16,11 @@ public class Reigns  {
     private static Personnage personnage;
 
     /**
+     * les jauges
+     */
+    protected static Jauge jauges;
+
+    /**
      * la banque de questions
      */
     private static ArrayList<Question> questions;
@@ -41,16 +46,18 @@ public class Reigns  {
         System.out.println(personnage.getGenre().longRegne()
                 +" "+personnage.getNom());
 
-        personnage.AfficheJauges();
+        jauges.InitJauge();
+
+        jauges.AfficheJauges();
 
         // tirage des questions
         int nbTours = 0;
-        while(!personnage.finDuJeu()){
+        while(!jauges.finDuJeu()){
             nbTours++;
             Question question = getQuestionAleatoire();
             //reponseQuestion(question);
             question.reponseQuestion(personnage);
-            personnage.AfficheJauges();
+            jauges.AfficheJauges();
         }
 
         // fin du jeu
@@ -85,6 +92,7 @@ public class Reigns  {
         }
 
         Reigns.personnage = new Personnage(nom,roiReine);
+        Reigns.jauges = new Jauge();
     }
 
     /**
