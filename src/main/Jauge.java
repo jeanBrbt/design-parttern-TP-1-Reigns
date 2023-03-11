@@ -32,6 +32,13 @@ public class Jauge {
 
     }
 
+    public void InitJauge(){
+        this.jauges = new HashMap<TypeJauge, Jauge>();
+        for (TypeJauge type : TypeJauge.values()) {
+            this.ajouterJauge(type, new Jauge(type,15 + (int)(Math.random() * (35 - 15))));
+        }
+    }
+
     /**
      * Retourne le nom de la jauge.
      *
