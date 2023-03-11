@@ -78,6 +78,21 @@ public class Jauge {
     }
 
     /**
+     * Vérifie si le jeu est fini en vérifiant si une des jauges est à 0 ou 50.
+     *
+     * @return true si le jeu est fini, false sinon
+     */
+
+    public boolean finDuJeu(){
+        for (Jauge jauge : jauges.values()) {
+            if(jauge.getValeur() <= 0 || jauge.getValeur() >= 50){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Retourne le nom de la jauge.
      *
      * @return le nom de la jauge
