@@ -53,7 +53,6 @@ public class Effets {
 
                 if (jauge.getKey().equals(effet.getKey())) {
                     jauge.getValue().setValeur(jauge.getValue().getValeur() + effet.getValue());
-                    this.appliqueEffets(effetJauge, jauges);
                 }
             }
         }
