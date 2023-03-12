@@ -1,4 +1,5 @@
 # Reigns
+## Jean Barbet & Enzo Chevalier
 
 Dans ce dépôt, vous trouverez une (mauvaise) implémentation du jeu REIGNS. 
 
