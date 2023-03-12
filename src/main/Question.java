@@ -22,38 +22,33 @@ public class Question {
     /**
      * l'effet de la réponse de gauche
      */
-    protected String effetGauche;
-    /**
-     * l'effet de la réponse de droite
-     */
-    protected String effetDroite;
-    /**
-     * les effets sur les jauges pour la réponse de gauche
-     */
-    protected Map<TypeJauge, Integer> effetJaugeGauche;
+    protected String effets;
+
+    protected Effets EffetGauche, EffetDroit;
+
     /**
      * les effets sur les jauges pour la réponse de droite
      */
-    protected Map<TypeJauge, Integer> effetJaugeDroite;
+    protected Map<TypeJauge, Jauge> effetsJauge;
+    protected Map<TypeJauge, Integer> jauges;
 
     /**
      * Construit une nouvelle question avec les informations données
      *
      * @param nomPersonnage Le nom du personnage associé à la question
      * @param question La question à poser
-     * @param effetGauche L'effet de la réponse de gauche
-     * @param effetDroite L'effet de la réponse de droite
-     */
+     * @param EffetGauche L'effet de la réponse de gauche
+     * @param EffetDroit L'effet de la réponse de droite
+     * */
     public Question(String nomPersonnage,
                     String question,
-                    String effetGauche,
-                    String effetDroite) {
+                    Effets EffetGauche,
+                    Effets EffetDroit) {
         this.nomPersonnage = nomPersonnage;
         this.question = question;
-        this.effetGauche = effetGauche;
-        this.effetDroite = effetDroite;
-        this.effetJaugeDroite = new TreeMap<>();
-        this.effetJaugeGauche = new TreeMap<>();
+        this.EffetGauche = EffetGauche;
+        this.EffetDroit = EffetDroit;
+        this.effetsJauge = new TreeMap<>();
     }
 
     /**
@@ -62,33 +57,15 @@ public class Question {
     public void afficheQuestion() {
         String result = "["+nomPersonnage+"] "
                 + question
-                + "[G: "+effetGauche
-                + ",D: "+effetDroite
+                + "[G: "+ EffetGauche.effetDesc
+                + ",D: "+ EffetDroit.effetDesc
                 + "]";
         System.out.println(result);
-        System.out.println("Effet G:"+afficheEffets(effetJaugeGauche));
-        System.out.println("Effet D:"+afficheEffets(effetJaugeDroite));
+        System.out.println("Effet G:"+ EffetGauche.afficheEffets(effetsJauge));
+        System.out.println("Effet D:"+ EffetDroit.afficheEffets(effetsJauge));
         System.out.flush();
     }
 
-
-    /**
-     * Applique les effets associés au choix gauche sur un personnage donné.
-     *
-     * @param personnage le personnage sur lequel les effets doivent être appliqués
-     */
-    public void appliqueEffetsGauche(Personnage personnage){
-        this.appliqueEffets(effetJaugeGauche, personnage);
-    }
-
-    /**
-     * Applique les effets associés au choix droit sur un personnage donné.
-     *
-     * @param personnage le personnage sur lequel les effets doivent être appliqués
-     */
-    public void appliqueEffetsDroite(Personnage personnage){
-        this.appliqueEffets(effetJaugeDroite, personnage);
-    }
 
     /**
      * Cette fonction permet de gérer la réponse à une question donnée. Elle affiche la question, demande à
@@ -108,32 +85,10 @@ public class Question {
         }
         // applique les malus
         if(reponse.equals("G")){
-            this.appliqueEffetsGauche(personnage);
+            EffetGauche.appliqueEffets(jauges, effetsJauge);
         }else{
-            this.appliqueEffetsDroite(personnage);
+            EffetDroit.appliqueEffets(jauges, effetsJauge);
         }
-    }
-
-    /**
-     * Ajoute un effet à la jauge associée au choix gauche.
-     *
-     * @param jauge la jauge à laquelle l'effet doit être ajouté
-     * @param valeur la valeur de l'effet à ajouter
-     */
-    public void ajouteEffetGauche(TypeJauge jauge,
-                                  int valeur){
-        effetJaugeGauche.put(jauge,valeur);
-    }
-
-    /**
-     * Ajoute un effet à la jauge associée au choix droit.
-     *
-     * @param jauge la jauge à laquelle l'effet doit être ajouté
-     * @param valeur la valeur de l'effet à ajouter
-     */
-    public void ajouteEffetDroite(TypeJauge jauge,
-                                  int valeur){
-        effetJaugeDroite.put(jauge,valeur);
     }
 
     /**
@@ -171,41 +126,4 @@ public class Question {
     public void setQuestion(String question) {
         this.question = question;
     }
-
-    /**
-     * Retourne l'effet gauche de la question.
-     *
-     * @return l'effet gauche de la question.
-     */
-    public String getEffetGauche() {
-        return effetGauche;
-    }
-
-    /**
-     * Modifie l'effet gauche de la question.
-     *
-     * @param effetGauche le nouvel effet gauche de la question
-     */
-    public void setEffetGauche(String effetGauche) {
-        this.effetGauche = effetGauche;
-    }
-
-    /**
-     * Retourne l'effet droit de la question.
-     *
-     * @return l'effet droit de la question.
-     */
-    public String getEffetDroite() {
-        return effetDroite;
-    }
-
-    /**
-     * Modifie l'effet droit de la question.
-     *
-     * @param effetDroite le nouvel effet droit de la question
-     */
-    public void setEffetDroite(String effetDroite) {
-        this.effetDroite = effetDroite;
-    }
-
 }
