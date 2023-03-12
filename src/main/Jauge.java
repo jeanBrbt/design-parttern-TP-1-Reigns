@@ -64,16 +64,16 @@ public class Jauge {
     public void afficheJauge(Jauge jauge) {
         String resultat = "[";
         // valeur : ####
-        for(int i=0;i<this.valeur;i++){
+        for(int i=0;i<jauge.valeur;i++){
             resultat += "#";
         }
         // on complète avec ____
-        for(int i=0;i<50-(this.valeur>0?jauge.getValeur():0);i++){
+        for(int i=0;i<50-(i>0?jauge.getValeur():0);i++){
             resultat += "_";
         }
         resultat += "] ";
         // affichage du nom
-        resultat += this.nom;
+        resultat += jauge.nom;
         System.out.println(resultat);
     }
 
