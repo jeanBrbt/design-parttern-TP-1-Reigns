@@ -71,23 +71,6 @@ public class Question {
         System.out.flush();
     }
 
-    /**
-     * Retourne une chaîne de caractères représentant les effets d'une jauge.
-     *
-     * @param effets La map des effets de jauge
-     * @return la chaîne de caractères représentant les effets de la jauge
-     */
-    private String afficheEffets(Map<TypeJauge, Integer> effets) {
-        StringBuilder result = new StringBuilder();
-        for (Map.Entry<TypeJauge, Integer> effet : effets.entrySet()) {
-            result.append("; jauge ").append(effet.getKey()).append(":");
-            if (effet.getValue() > 0) {
-                result.append("+");
-            }
-            result.append(effet.getValue());
-        }
-        return result.toString();
-    }
 
     /**
      * Applique les effets associés au choix gauche sur un personnage donné.
@@ -107,39 +90,6 @@ public class Question {
         this.appliqueEffets(effetJaugeDroite, personnage);
     }
 
-    /**
-     * Applique les effets d'une jauge sur un personnage donné.
-     *
-     * @param effets les effets de jauge à appliquer
-     * @param personnage le personnage sur lequel les effets doivent être appliqués
-     */
-    private void appliqueEffets(Map<TypeJauge,Integer> effets,
-                                Personnage personnage){
-        for(Map.Entry<TypeJauge,Integer> effet : effets.entrySet()){
-            switch(effet.getKey()){
-                case ARMEE:
-                    personnage.getJaugeArmee().setValeur(
-                            personnage.getJaugeArmee().getValeur()
-                                    +effet.getValue());
-                    break;
-                case CLERGE:
-                    personnage.getJaugeClerge().setValeur(
-                            personnage.getJaugeClerge().getValeur()
-                                    +effet.getValue());
-                    break;
-                case FINANCE:
-                    personnage.getJaugeFinance().setValeur(
-                            personnage.getJaugeFinance().getValeur()
-                                    +effet.getValue());
-                    break;
-                case PEUPLE:
-                    personnage.getJaugePeuple().setValeur(
-                            personnage.getJaugePeuple().getValeur()
-                                    +effet.getValue());
-                    break;
-            }
-        }
-    }
     /**
      * Cette fonction permet de gérer la réponse à une question donnée. Elle affiche la question, demande à
      * l'utilisateur d'entrer une réponse (soit "G" soit "D") et en fonction de la réponse, elle appelle la méthode
